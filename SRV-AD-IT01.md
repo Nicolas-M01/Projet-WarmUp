@@ -8,6 +8,4 @@
 
 ### Vérification si le compte "Administrateur" est autorisé à se connecter  
 ![alt text](<Images/Capture d'écran 2026-01-15 165450.png>)  
-**✅ Il est autorisé**  
-
-test test 
+**✅ Il est autorisé** 
