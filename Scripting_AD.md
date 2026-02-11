@@ -1,12 +1,14 @@
 
 
-## Création des utilisateurs, groupes de sécurité, OU et attributions respectives selon consignes, ont été établi par scripts PowerShell.  
 
-### Création des utilisateurs [Create_Users](Scripts/NAB_Create_Users.ps1).  
+
+## ![PowerShell Logo](https://logo.svgcdn.com/devicon/powershell-original.svg) Création des utilisateurs, groupes de sécurité, OU et attributions respectives selon consignes, ont été établi par scripts PowerShell.  
+
+### ![PowerShell Logo](https://logo.svgcdn.com/devicon/powershell-original.svg) Création des utilisateurs [Script_Create_Users](Scripts/NAB_Create_Users.ps1).  
 >:bulb: Les utilisateurs ont été créés dans l'OU d'origine **Users**  
 ![alt text](<Images/Capture d'écran 2026-02-11 120855.png>)  
 
-### Création des OU, des groupes, puis intégrations des users dans leurs groupes, puis déplacement des groupes dans les OU [Create_OU_Groups](Scripts/NAB_Create_OU_GRP.ps1)  
+### ![PowerShell Logo](https://logo.svgcdn.com/devicon/powershell-original.svg) Création des OU, des groupes, puis intégrations des users dans leurs groupes, puis déplacement des groupes dans les OU [Script_Create_OU_Groups](Scripts/NAB_Create_OU_GRP.ps1)  
 
 >:bulb: Création des OU, des groupes, puis déplacement des groupes dans les bonnes OU.  
 ![alt text](<Images/Capture d'écran 2026-02-11 134112.png>)  
@@ -22,4 +24,4 @@
 ![alt text](<Images/Capture d'écran 2026-02-11 141652.png>)  
 
 
-### 🟢 L'automatisation permet une gestion à grande échelle, rapide et efficace des comptes AD.  
+### 🟢 L'automatisation permet une gestion à grande échelle, rapide et efficace des comptes AD. 🐱  
