@@ -23,5 +23,7 @@
 ![alt text](<Images/Capture d'écran 2026-02-11 141626.png>)  
 ![alt text](<Images/Capture d'écran 2026-02-11 141652.png>)  
 
+✅ **Résultat**  
+![alt text](<Images/Capture d'écran 2026-02-11 141720.png>)
 
 ### 🟢 L'automatisation permet une gestion à grande échelle, rapide et efficace des comptes AD. 🐱  
