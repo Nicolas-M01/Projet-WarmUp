@@ -14,12 +14,13 @@
 
 ## Installation des outils et des services pour rejoindre le domaine  
 
+### Installation des outils AD, DNS, DHCP et rejoindre le domaine
 ![alt text](<Images/Capture d'écran 2026-03-10 102118.png>)  
 
 
 ### Le serveur Core a bien rejoins le domaine  
 ![alt text](<Images/Capture d'écran 2026-03-10 102439.png>)
 
-
+Une fois que le serveur core a rejoint le domaine, il suffit de l'ajouter comme serveur depuis le serveur GUI.  
 
 
