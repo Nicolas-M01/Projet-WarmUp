@@ -11,7 +11,7 @@ New-SmbShare -Name "personnels$" -Path "C:\Personnels" `
 Import-Module ActiveDirectory
 
 $racine = "C:\Personnels"
-$users = Get-ADUser -Filter * -SearchBase "DC=nab,DC=local" -SearchScope Subtree
+$users = Get-ADUser -Filter { Enabled -eq $true } -SearchBase "DC=nab,DC=local" -SearchScope Subtree
 
 foreach ($user in $users) {
     $chemin = "$racine\$($user.SamAccountName)"
@@ -27,7 +27,7 @@ foreach ($user in $users) {
 
     # Donner contrôle total à l'utilisateur uniquement
     $rule = New-Object System.Security.AccessControl.FileSystemAccessRule(
-        $user.SamAccountName,
+        "NAB\$($user.SamAccountName)",
         "FullControl",
         "ContainerInherit,ObjectInherit",
         "None",
