@@ -3,7 +3,7 @@
 # Récupération des OUs, on affiche le DN et on exclue les DC, on ajoute dans une variable
 $OUs = Get-ADOrganizationalUnit -Filter * | Where-Object { $_.distinguishedname -notlike "*Domain Controllers" }
 
-# Boucle qui parcout chaque OU
+# Boucle qui parcourt chaque OU
 foreach ($ou in $OUs) {
 
     # Le dossier sera nommé "Commun" suivi du nom de l'OU
