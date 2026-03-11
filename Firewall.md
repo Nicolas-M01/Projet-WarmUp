@@ -30,6 +30,7 @@ Puis une activation du relai DHCP est effectué sur le FIreWall, car les serveur
 
 ![alt text](<Images/Capture d'écran 2026-02-09 170047.png>)  
 
+**Paramétrage du Firwall PfSense pour les VLANS** :  
 
 
 
@@ -48,3 +49,4 @@ Il reste à paramétrer les cartes et les vlans sur le firewall.
 Chaque client devra être tagué sur le bon VLAN come ici en vlan 50 :  
 ![alt text](<Images/Capture d'écran 2026-03-10 172224.png>)
 
+**Paramétrage du Firwall PfSense pour les VLANS** :  
