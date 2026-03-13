@@ -31,7 +31,18 @@ Après lisaison de la GPO dans les bonnes OU, `gpupdate /force` et `gpresult /R`
 ![alt text](<Images/Capture d'écran 2026-03-11 181107.png>)
 
 
-### Vérification avec un client  
 
+## Script de création des dossiers partagés personnels et mappage par GPO.
+
+[Script de création des dossier personnels partagés](Scripts/PartagePersoCachéUser.ps1)
+Le script est exécuté depuis le Windows serveur.  
+![alt text](<Images/Capture d'écran 2026-03-13 154756.png>)  
+
+Mappage par GPO :  
+![alt text](<Images/Capture d'écran 2026-03-13 160449.png>)  
+
+Vérification sur 2 clients :  
+![alt text](<Images/Capture d'écran 2026-03-13 160120.png>)  
+![alt text](<Images/Capture d'écran 2026-03-13 160621.png>)  
 
 
