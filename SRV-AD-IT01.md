@@ -23,5 +23,5 @@
 
 Une fois que le serveur core a rejoint le domaine, il suffit de l'ajouter comme serveur depuis le serveur GUI.  
 
-
+![alt text](<Images/Capture d'écran 2026-03-10 103715.png>)
 
