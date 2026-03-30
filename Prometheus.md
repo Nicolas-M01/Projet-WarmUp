@@ -72,6 +72,21 @@ WantedBy=multi-user.target
 ```
 ![alt text](<Images/Capture d'écran 2026-03-30 115127.png>)
 
+---
+
+>### **⚙️ Installation Grafana et règles de firewall :**  
+
+`sudo apt install -y apt-transport-https software-properties-common wget gnupg2`  
+`wget -q -O - https://apt.grafana.com/gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/grafana.gpg`  
+`echo "deb [signed-by=/usr/share/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee /etc/apt/sources.list.d/grafana.list`  
+`sudo apt update && sudo apt install -y grafana`  
+**Démarrage service :**  
+``sudo systemctl daemon-reload``  
+``sudo systemctl enable grafana-server``  
+``sudo systemctl status grafana-server``  
+**Règle de firewall :**  
+`sudo ufw allow from 10.1.10.0/24 to any port 3000 proto tcp`  
+`sudo ufw reload`  
 
 ---
 
