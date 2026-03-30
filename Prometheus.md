@@ -1,5 +1,20 @@
 
->**⚙️ Création du fihier prometheus.yml et durcissement des règles :**  
+>### **⚙️ Installation Prometheus sur Debian 12 :**  
+Créer VM Debian 12, puis télécharger Prometheus :  
+`wget https://github.com/prometheus/prometheus/releases/download/v2.51.0/prometheus-2.51.0.linux-amd64.tar.gz`  
+`tar xvf prometheus-2.51.0.linux-amd64.tar.gz`
+`cd prometheus-2.51.0.linux-amd64`  
+`sudo cp prometheus /usr/local/bin/`  
+`sudo cp promtool /usr/local/bin/`  
+
+**Copier les fichiers de config :**  
+``sudo mkdir /etc/prometheus``  
+``sudo mkdir /var/lib/prometheus``  
+``sudo cp -r consoles/ console_libraries/ /etc/prometheus/``  
+``sudo cp prometheus.yml /etc/prometheus/``  
+
+
+>### **⚙️ Création du fihier prometheus.yml et durcissement des règles :**  
 Création utilisateur système sans home, sans login :  
  **`useradd --no-create-home --shell /bin/false prometheus`**  
 ![alt text](<Images/Capture d'écran 2026-03-30 115422.png>)
@@ -8,7 +23,7 @@ Création utilisateur système sans home, sans login :
 
 ---
 
->**⚙️ Installation agent sur Windows avec règles de FireWall :**  
+>### **⚙️ Installation agent sur Windows avec règles de FireWall :**  
 
 Installer agent Windows_exporter après avoir vérifié le hash de l'exécutable et mettre des règles de firewall :  
 **`New-NetFirewallRule -DisplayName "Prometheus Windows Exporter" -Direction Inbound -Action Allow -Protocol tcp -LocalPort 9182 -RemoteAddress 10.1.10.11 -Pofile private`**  
@@ -18,7 +33,7 @@ Installer agent Windows_exporter après avoir vérifié le hash de l'exécutable
 
 ---
 
->**⚙️ Installation agent sur Linux avec règles de FireWall :**  
+>### **⚙️ Installation agent sur Linux avec règles de FireWall :**  
 
 Vérifier hash du binaire puis installer node_exporter :  
 
@@ -29,7 +44,7 @@ Décompression de l'archive :
 
 **Copie du binaire dans un repertoire standard du système et modification des droits :**  
 ``cp node_exporter-1.10.2.linux-amd64/node_exporter /usr/local/bin/``  
-``sudo chmod 755 /usr/local/bin/node_exporter``  
+``sudo chmod 750 /usr/local/bin/node_exporter``  
 ``sudo chown node_exporter:node_exporter /usr/local/bin/node_exporter``  
 
 
@@ -42,7 +57,7 @@ Autoriser uniquement l'IP du serveur Prometheus
 
 
 
-Fichier de configuration du service node_exporter :  
+**Fichier de configuration du service node_exporter :**  
 `sudo nano /etc/systemd/system/node_exporter.service` :  
 ```yml
 
@@ -83,17 +98,17 @@ WantedBy=multi-user.target
 
 ---
 
->**⚙️ Paramétrage minimal de Prometheus :**  
+>### **⚙️ Paramétrage minimal de Prometheus :**  
 ![alt text](<Images/Capture d'écran 2026-03-30 112123.png>)
 
 ---
 
->**⚙️ Vérification du status des clients depuis port 9090 :**  
+>### **⚙️ Vérification du status des clients depuis port 9090 :**  
 ![alt text](<Images/Capture d'écran 2026-03-30 112546.png>) 
 
 ---
 
->**⚙️ Visualisation des dashboards avec Grafana depuis son port 3000 :**  
+>### **⚙️ Visualisation des dashboards avec Grafana depuis son port 3000 :**  
 ![alt text](<Images/Capture d'écran 2026-03-30 113042.png>)  
 
 
