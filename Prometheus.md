@@ -27,13 +27,25 @@ Vérifier hash du binaire puis installer node_exporter :
 Décompression de l'archive :
 ``tar xvf node_exporter-1.10.2.linux-amd64.tar.gz``
 
-**Copie du binaire dans un repertoire standard du système et modification des droits :**
+**Copie du binaire dans un repertoire standard du système et modification des droits :**  
 ``cp node_exporter-1.10.2.linux-amd64/node_exporter /usr/local/bin/``  
 ``sudo chmod 755 /usr/local/bin/node_exporter``  
 ``sudo chown node_exporter:node_exporter /usr/local/bin/node_exporter``  
 
-Fichier de configuration du service node_exporter, ``sudo nano /etc/systemd/system/node_exporter.service` :  
+
+**Règles de firewall (après installation de ufw) :**  
+Autoriser uniquement l'IP du serveur Prometheus  
+`sudo ufw allow from 10.1.10.11 to any port 9100 proto tcp`  
+`sudo ufw enable` : Si UFW n'est pas encore actif  
+`sudo ufw reload` : Recharger après modification  
+`sudo ufw status verbose`  
+
+
+
+Fichier de configuration du service node_exporter :  
+`sudo nano /etc/systemd/system/node_exporter.service` :  
 ```yml
+
 [Unit]
 # Description du service affichée par systemd
 Description=Prometheus Node Exporter
