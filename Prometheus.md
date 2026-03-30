@@ -14,10 +14,62 @@ Créer VM Debian 12, puis télécharger Prometheus :
 ``sudo cp prometheus.yml /etc/prometheus/``  
 
 
->### **⚙️ Création du fihier prometheus.yml et durcissement des règles :**  
+>### **⚙️ Création du fihier `/etc/systemd/system/prometheus.service` et durcissement des règles :**  
 Création utilisateur système sans home, sans login :  
  **`useradd --no-create-home --shell /bin/false prometheus`**  
-![alt text](<Images/Capture d'écran 2026-03-30 115422.png>)
+
+
+```ini
+[Unit]
+# Attend que le réseau soit disponible avant de démarrer
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+# Exécution sous l'utilisateur et groupe dédiés (principe du moindre privilège)
+User=prometheus
+Group=prometheus
+# Type simple : systemd considère le service comme démarré dès le lancement du processus
+Type=simple
+
+# Sécurité : bind local si lifecycle activé (pas d'accès externe non authentifié)
+ExecStart=/usr/local/bin/prometheus \
+  # Fichier de configuration principal
+  --config.file=/etc/prometheus/prometheus.yml \
+  # Répertoire de stockage des données TSDB (time series)
+  --storage.tsdb.path=/var/lib/prometheus \
+  # Templates web de la console Prometheus
+  --web.console.templates=/etc/prometheus/consoles \
+  # Bibliothèques des consoles web
+  --web.console.libraries=/etc/prometheus/console_libraries \
+  # Écoute sur toutes les interfaces sur le port 9090
+  --web.listen-address=0.0.0.0:9090 \
+  # Active l'API lifecycle (reload, quit) via HTTP POST
+  --web.enable-lifecycle
+
+# Rechargement de la config sans redémarrage (SIGHUP)
+ExecReload=/bin/kill -HUP $MAINPID
+# Redémarre automatiquement en cas de crash
+Restart=always
+# Délai de 10s avant redémarrage
+RestartSec=10
+
+# Hardening systemd
+# Interdit l'élévation de privilèges (setuid, capabilities)
+NoNewPrivileges=true
+# Répertoire /tmp isolé et privé pour le service
+PrivateTmp=true
+# Système de fichiers en lecture seule (sauf exceptions)
+ProtectSystem=strict
+# Interdit l'accès aux répertoires home des utilisateurs
+ProtectHome=true
+# Seul ce chemin est accessible en lecture/écriture
+ReadWritePaths=/var/lib/prometheus
+
+[Install]
+# Activé dans la cible multi-utilisateur (démarrage normal du système)
+WantedBy=multi-user.target
+```
 ![alt text](<Images/Capture d'écran 2026-03-30 115127.png>)
 
 
