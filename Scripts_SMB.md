@@ -16,7 +16,7 @@
 ![alt text](<Images/Capture d'écran 2026-03-11 174548.png>)
 
 
-### Création des GPO de mappage  
+### Création de la GPO de mappage  
 >⚙️ 1 GPO est créée et contient tous les mappages et sera liée à chaque OU de chaque service. Les mappages de lecteurs sont ciblés au niveau du groupe de sécurité  
 ![alt text](<Images/Capture d'écran 2026-03-11 175006.png>)
 
