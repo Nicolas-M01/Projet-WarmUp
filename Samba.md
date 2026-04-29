@@ -1,0 +1,44 @@
+
+### Installer et paramétrer un serveur Samba  
+  
+
+* Installation de Samba (SMB Linux)  
+`sudo apt install samba`  
+`sudo smbd --version permet de voir la version et donc qu'il est bien installé`  
+
+Démarrage au lancement de l'OS, puis démarrage, puis vérif du status :
+`systemctl enable smbd`  
+`systemctl start smbd`  
+`systemctl status smbd` : ✅ Si "Active" on passe à la suite  
+ 
+
+#### Paramètrage du fichier de configuraton de samba
+Il se trouve à : `/etc/samba/smb.conf`  
+A éditer en root, ajouter la config du nouveu partage :  
+
+```ini
+[partage]
+comment = Partage de données
+path = /srv/partage
+guest ok = no
+read only = no
+browsable = yes
+```
+On y retrouve :  
+* le nom du [partage].  
+* le chemin physique sur le serveur.  
+* les users non authentifés ne pourront pas se connecter.  
+* Pas de lecture seule.  
+* Serveur visible lorsque l'on liste les partages.  
+
+#### Ajouter utilisateur dans smb
+Il faut ajouter un compte spécifique sur smb user/password (car il peut être différent d'une session système linux)  
+`sudo smbpasswd -a smbuser`  
+`sudo smbpasswd -e smbuser` : Activation du user sur smb.  
+
+
+
+`sudo mkdir /srv/partage` : Création du dossier partagé.  
+`sudo chown smbuser:smbuser /srv/partage` : Attribution des droits uniquement à un user spécifique.  
+`sudo chmod 700 /srv/partage` : droits uniquement pour le user propriétaire, les autres ne peuvent rien faire  
+
